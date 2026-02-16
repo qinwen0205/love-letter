@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>❤️ 给【马紫伊宝宝】❤️</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Microsoft YaHei', '苹方', 'PingFang SC', 'KaiTi', cursive;
+        }
+        
+        body {
+            background: linear-gradient(160deg, #fce4e4 0%, #ffe0e0 50%, #fff0f0 100%);
+            min-height: 100vh;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .container {
+            max-width: 500px;
+            width: 100%;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        /* 背景爱心装饰 */
+        .bg-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.3;
+        }
+        
+        .bg-heart {
+            position: absolute;
+            font-size: 20px;
+            color: #ffb6b6;
+            animation: floatBg 20s infinite linear;
+        }
+        
+        @keyframes floatBg {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.3; }
+            90% { opacity: 0.3; }
+            100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+        }
+        
+        /* 主卡片 */
+        .card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-radius: 40px;
+            padding: 30px 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 25px 50px rgba(255, 140, 140, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            position: relative;
+            z-index: 10;
+            transition: all 0.5s;
+        }
+        
+        /* 封面 */
+        .cover {
+            text-align: center;
+            padding: 40px 20px 50px;
+            background: rgba(255, 255, 255, 0.95);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .heart-main {
+            font-size: 80px;
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+            cursor: pointer;
+            display: inline-block;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); text-shadow: 0 0 10px #ff6f6f; }
+            50% { transform: scale(1.1); text-shadow: 0 0 30px #ff3b3b; }
+        }
+        
+        .cover h1 {
+            font-size: 36px;
+            color: #b34747;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        .cover-sub {
+            font-size: 18px;
+            color: #b85c5c;
+            margin: 25px 0;
+            line-height: 1.8;
+        }
+        
+        .enter-btn {
+            background: #ff8a8a;
+            color: white;
+            border: none;
+            padding: 18px 50px;
+            border-radius: 60px;
+            font-size: 20px;
+            font-weight: bold;
+            box-shadow: 0 10px 20px rgba(255, 100, 100, 0.4);
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid white;
+            margin: 20px 0 10px;
+        }
+        
+        .enter-btn:hover {
+            background: #ff6f6f;
+            transform: scale(1.05);
+        }
+        
+        .enter-btn:active {
+            transform: scale(0.95);
+        }
+        
+        .hint {
+            color: #c47a7a;
+            font-size: 15px;
+            margin-top: 30px;
+            letter-spacing: 1px;
+        }
+        
+        /* 进度指示 */
+        .journey-progress {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0 30px;
+            padding: 0 10px;
+        }
+        
+        .progress-dot {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #ffe0e0;
+            border: 2px dashed #ffa5a5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: #b85c5c;
+            transition: all 0.5s;
+            position: relative;
+        }
+        
+        .progress-dot.active {
+            background: #ffb6b6;
+            border: 2px solid #ff6f6f;
+            color: #b34747;
+            transform: scale(1.1);
+            box-shadow: 0 0 20px #ffb6b6;
+        }
+        
+        .progress-dot.completed {
+            background: #ff8a8a;
+            border: 2px solid #ff4f4f;
+            color: white;
+        }
+        
+        .progress-line {
+            flex: 1;
+            height: 3px;
+            background: #ffe0e0;
+            margin: auto 5px;
+            position: relative;
+        }
+        
+        .progress-line.filled {
+            background: linear-gradient(90deg, #ffb6b6, #ff6f6f);
+        }
+        
+        /* 互动卡片 */
+        .interact-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 35px;
+            padding: 30px 25px;
+            margin: 20px 0;
+            border: 2px solid white;
+            box-shadow: 0 15px 30px rgba(255, 150, 150, 0.2);
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .interact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(255, 120, 120, 0.3);
+        }
+        
+        .interact-card:active {
+            transform: scale(0.98);
+        }
+        
+        .interact-icon {
+            font-size: 50px;
+            margin-bottom: 15px;
+            transition: all 0.3s;
+        }
+        
+        .interact-title {
+            font-size: 24px;
+            color: #b34747;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+        
+        .interact-sub {
+            color: #b85c5c;
+            font-size: 16px;
+            opacity: 0.8;
+        }
+        
+        .lock-icon {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 24px;
+            opacity: 0.5;
+            transition: all 0.3s;
+        }
+        
+        .interact-card.unlocked .lock-icon {
+            opacity: 0;
+        }
+        
+        /* 解锁的内容卡片 */
+        .content-card {
+            background: rgba(255, 245, 245, 0.95);
+            border-radius: 30px;
+            padding: 25px;
+            margin: 20px 0;
+            border-left: 8px solid #ff8a8a;
+            animation: fadeSlide 0.8s;
+            display: none;
+        }
+        
+        .content-card.show {
+            display: block;
+        }
+        
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .content-title {
+            font-size: 26px;
+            color: #b34747;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        /* 第一封信 */
+        .letter-content {
+            font-family: 'KaiTi', cursive;
+            line-height: 2;
+            color: #563838;
+            font-size: 17px;
+        }
+        
+        .letter-content p {
+            margin-bottom: 20px;
+            text-indent: 2em;
+        }
+        
+        .signature {
+            text-align: right;
+            margin-top: 30px;
+            font-size: 20px;
+            color: #b34747;
+        }
+        
+        /* 在一起多久的计数器 */
+        .together-counter {
+            background: linear-gradient(135deg, #ffd9d9, #ffe9e9);
+            padding: 25px;
+            border-radius: 30px;
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .together-number {
+            font-size: 48px;
+            color: #b34747;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        
+        .together-unit {
+            font-size: 18px;
+            color: #b85c5c;
+        }
+        
+        .together-date {
+            font-size: 20px;
+            color: #b34747;
+            margin: 15px 0;
+        }
+        
+        /* 回忆时间轴 */
+        .memory-timeline {
+            margin: 20px 0;
+        }
+        
+        .memory-item {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 25px;
+            align-items: flex-start;
+        }
+        
+        .memory-icon {
+            font-size: 24px;
+            min-width: 40px;
+            height: 40px;
+            background: #ffe0e0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .memory-text {
+            flex: 1;
+        }
+        
+        .memory-date {
+            font-weight: bold;
+            color: #b34747;
+            margin-bottom: 5px;
+            font-size: 18px;
+        }
+        
+        .memory-desc {
+            color: #6d4c4c;
+            line-height: 1.6;
+            background: rgba(255, 230, 230, 0.5);
+            padding: 12px 15px;
+            border-radius: 18px;
+        }
+        
+        /* 专属档案卡片 */
+        .profile-grid {
+            display: grid;
+            gap: 15px;
+        }
+        
+        .profile-item {
+            background: rgba(255, 240, 240, 0.8);
+            padding: 18px;
+            border-radius: 20px;
+            border: 1px solid #ffd9d9;
+        }
+        
+        .profile-question {
+            font-weight: bold;
+            color: #b34747;
+            margin-bottom: 8px;
+            font-size: 18px;
+        }
+        
+        .profile-answer {
+            color: #5a3e3e;
+            font-size: 17px;
+            line-height: 1.6;
+            padding-left: 10px;
+            border-left: 3px solid #ffb6b6;
+        }
+        
+        /* 最终告白 */
+        .final-love {
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 40px;
+            padding: 40px 25px;
+            text-align: center;
+            margin: 30px 0;
+            border: 3px solid #ff8a8a;
+            animation: glowPulse 2s infinite;
+            display: none;
+        }
+        
+        .final-love.show {
+            display: block;
+        }
+        
+        @keyframes glowPulse {
+            0%, 100% { box-shadow: 0 0 20px #ffb6b6; }
+            50% { box-shadow: 0 0 50px #ff8a8a; }
+        }
+        
+        .final-heart {
+            font-size: 100px;
+            animation: heartbeat 1s infinite;
+            margin-bottom: 20px;
+        }
+        
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            25% { transform: scale(1.1); }
+            30% { transform: scale(1); }
+            35% { transform: scale(1.2); }
+        }
+        
+        .final-message {
+            font-size: 28px;
+            color: #b34747;
+            margin: 25px 0;
+            font-weight: bold;
+            line-height: 1.5;
+        }
+        
+        .final-name {
+            font-size: 48px;
+            color: #ff4f4f;
+            margin: 20px 0;
+            text-shadow: 2px 2px 10px #ffb6b6;
+        }
+        
+        .final-footer {
+            margin-top: 40px;
+            color: #b85c5c;
+            font-size: 18px;
+        }
+        
+        /* 重置按钮 */
+        .reset-btn {
+            background: none;
+            border: 1px solid #ffa5a5;
+            color: #b85c5c;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 14px;
+            cursor: pointer;
+            margin: 30px auto;
+            display: block;
+            transition: all 0.3s;
+        }
+        
+        .reset-btn:hover {
+            background: #ffe0e0;
+            transform: scale(1.05);
+        }
+        
+        .reset-btn:active {
+            transform: scale(0.95);
+        }
+        
+        /* 回到顶部按钮 */
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background: #ff8a8a;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(255, 100, 100, 0.4);
+            z-index: 100;
+            opacity: 0.8;
+            transition: all 0.3s;
+        }
+        
+        .back-to-top:hover {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- 背景漂浮爱心 -->
+    <div class="bg-hearts" id="bgHearts"></div>
+    
+    <div class="container">
+        <!-- 封面页 -->
+        <div id="coverPage" class="card cover">
+            <div class="heart-main" onclick="startJourney()">❤️</div>
+            <h1>给【马紫伊宝宝】</h1>
+            <div class="cover-sub">
+                这是一段<br>想对你说的心里话
+            </div>
+            <button class="enter-btn" onclick="startJourney()">点开我的心</button>
+            <div class="hint">
+                点击❤️或按钮，开始这段旅程
+            </div>
+        </div>
+        
+        <!-- 主内容（初始隐藏） -->
+        <div id="mainContent" style="display: none;">
+            <!-- 进度指示 -->
+            <div class="journey-progress">
+                <div id="dot1" class="progress-dot">①</div>
+                <div id="line1" class="progress-line"></div>
+                <div id="dot2" class="progress-dot">②</div>
+                <div id="line2" class="progress-line"></div>
+                <div id="dot3" class="progress-dot">③</div>
+                <div id="line3" class="progress-line"></div>
+                <div id="dot4" class="progress-dot">④</div>
+            </div>
+            
+            <!-- 第一层：道歉信 -->
+            <div id="interact1" class="interact-card" onclick="unlockLevel(1)">
+                <div class="interact-icon">💌</div>
+                <div class="interact-title">第一封信</div>
+                <div class="interact-sub">点击打开我想对你说的第一句话</div>
+                <div class="lock-icon" id="lock1">🔒</div>
+            </div>
+            
+            <div id="content1" class="content-card">
+                <div class="content-title">💌 第一封信：对不起</div>
+                <div class="letter-content">
+                    <p>【宝宝】：</p>
+                    <p>打下这些字的时候，我的心情是复杂的，态度是认真的。因为我很怕你不原谅我，怕我太笨哄不好你。</p>
+                    <p>在情人节，我没有用心，花心思去准备，在说这个事的时候，我也没第一时间认识到宝宝不开心的原因。现在想想，我自己都想抽自己。</p>
+                    <p>你不高兴的不是没有什么，你不高兴的是我没有用心去准备，这会给你不重视的感觉，对不起宝宝。</p>
+                    <p>再然后我又犯傻，第一是因为这个事我没有好好分享我的事和行程，但实际上我是应该说的；
+					第二个是给了我机会，实际行动去补救，但我却没懂宝宝“不想”的意思，让宝宝更不开心了</p>
+                    <p>对不起，让宝宝失望了。</p>
+                    <p>但我想告诉你，这封信里，每一个字，每一个心，都是我自己真心写的。希望能让我的宝宝知道，你永远值得我最好的用心。</p>
+                    <div class="signature">永远爱你的猪【白钦文】</div>
+                </div>
+            </div>
+            
+            <!-- 第二层：在一起多久 + 回忆 -->
+            <div id="interact2" class="interact-card" onclick="unlockLevel(2)">
+                <div class="interact-icon">📀</div>
+                <div class="interact-title">我们的时光</div>
+                <div class="interact-sub">点击播放我们的回忆唱片</div>
+                <div class="lock-icon" id="lock2">🔒</div>
+            </div>
+            
+            <div id="content2" class="content-card">
+                <div class="content-title">📀 我们的时光</div>
+                
+                <!-- 在一起多久的计数器 -->
+                <div class="together-counter">
+                    <div style="font-size: 20px; color: #b85c5c;">我们在一起已经</div>
+                    <div class="together-number" id="togetherDays">0</div>
+                    <div class="together-unit">天</div>
+                    <div class="together-date">从 2023年5月20日 到现在</div>
+                </div>
+                
+                <!-- 回忆时间轴 -->
+                <div style="margin-top: 25px;">
+                    <div style="font-size: 22px; color: #b34747; margin-bottom: 20px;">✨ 我记得的瞬间</div>
+                    <div class="memory-timeline">
+                        <div class="memory-item">
+                            <div class="memory-icon">💕</div>
+                            <div class="memory-text">
+                                <div class="memory-date">第一次遇见你</div>
+                                <div class="memory-desc">【写第一次见面的场景：时间、地点、你穿了什么、我什么感觉】</div>
+                            </div>
+                        </div>
+                        
+                        <div class="memory-item">
+                            <div class="memory-icon">✨</div>
+                            <div class="memory-text">
+                                <div class="memory-date">第一次心动</div>
+                                <div class="memory-desc">【写一个让你心动的瞬间】</div>
+                            </div>
+                        </div>
+                        
+                        <div class="memory-item">
+                            <div class="memory-icon">🎂</div>
+                            <div class="memory-text">
+                                <div class="memory-date">第一次一起过生日</div>
+                                <div class="memory-desc">【写你们的某个重要时刻】</div>
+                            </div>
+                        </div>
+                        
+                        <div class="memory-item">
+                            <div class="memory-icon">🌧️</div>
+                            <div class="memory-text">
+                                <div class="memory-date">最感动的一次</div>
+                                <div class="memory-desc">【写她做过的最让你感动的事】</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 第三层：专属档案（证明你懂她） -->
+            <div id="interact3" class="interact-card" onclick="unlockLevel(3)">
+                <div class="interact-icon">🏮</div>
+                <div class="interact-title">点亮这盏灯</div>
+                <div class="interact-sub">让你看看我有多懂你</div>
+                <div class="lock-icon" id="lock3">🔒</div>
+            </div>
+            
+            <div id="content3" class="content-card">
+                <div class="content-title">🏮 我眼中的你</div>
+                <div class="profile-grid">
+                    <div class="profile-item">
+                        <div class="profile-question">你最爱的食物是什么？</div>
+                        <div class="profile-answer">【她的最爱，比如：火锅，而且要辣的那种】</div>
+                    </div>
+                    
+                    <div class="profile-item">
+                        <div class="profile-question">你生气时会做什么？</div>
+                        <div class="profile-answer">【写她生气时的样子，比如：不说话，自己生闷气】</div>
+                    </div>
+                    
+                    <div class="profile-item">
+                        <div class="profile-question">你最让我心动的一个习惯</div>
+                        <div class="profile-answer">【写她的小习惯，比如：吃东西前要先拍照，认真吃饭的样子超可爱】</div>
+                    </div>
+                    
+                    <div class="profile-item">
+                        <div class="profile-question">你最害怕什么？</div>
+                        <div class="profile-answer">【写她的小秘密，比如：怕黑、怕打雷】</div>
+                    </div>
+                    
+                    <div class="profile-item">
+                        <div class="profile-question">你最大的优点是什么？</div>
+                        <div class="profile-answer">【写她的优点，比如：对朋友特别真诚，总是为别人着想】</div>
+                    </div>
+                    
+                    <div class="profile-item">
+                        <div class="profile-question">你最喜欢别人怎么夸你？</div>
+                        <div class="profile-answer">【写她的小心思，比如：夸她温柔、夸她善良】</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 第四层：最终告白 -->
+            <div id="interact4" class="interact-card" onclick="unlockLevel(4)">
+                <div class="interact-icon">❤️</div>
+                <div class="interact-title">最后一颗心</div>
+                <div class="interact-sub">点开它，听我最想说的话</div>
+                <div class="lock-icon" id="lock4">🔒</div>
+            </div>
+            
+            <div id="content4" class="content-card">
+                <div class="content-title">❤️ 想对你说的所有心里话</div>
+                <div class="letter-content">
+                    <p>亲爱的【马紫伊】：</p>
+                    
+                    <p>如果你看到了这里，谢谢你愿意给我这个机会，让你看完这些。</p>
+                    
+                    <p>从我们在一起的那天起，我就知道你很特别。但我太笨了，总是用我以为的方式去爱你，而不是用你想要的方式。</p>
+                    
+                    <p>昨天的事情让我想了很多。我在想，如果有一天你离开我了，我会怎么样。我不敢想。</p>
+                    
+                    <p>【写一段你最想说的真心话】</p>
+                    
+                    <p>我不敢保证以后永远不会忘记什么，但我可以保证：</p>
+                    <p>· 以后每一个重要的日子，我都会提前准备<br>
+                    · 以后每一次你生气，我都会先想想你为什么生气，而不是急着解释<br>
+                    · 以后每一天，我都会让你感受到，你在我心里</p>
+                    
+                    <p>这个网页，是我这辈子第一次写代码。可能不完美，但每一个字都是真的。</p>
+                    
+                    <p>再给我一次机会，好吗？</p>
+                    
+                    <div class="signature">
+                        永远爱你的<br>
+                        【】<br>
+                        2024.2.16
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 最终大彩蛋（所有都解锁后出现） -->
+            <div id="finalGrand" class="final-love">
+                <div class="final-heart">❤️</div>
+                <div class="final-message">
+                    谢谢你<br>愿意看完这些
+                </div>
+                <div class="final-name">
+                    【马紫伊】
+                </div>
+                <div style="font-size: 22px; color: #b85c5c; margin: 25px 0;">
+                    你愿意<br>再给我一次机会吗？
+                </div>
+                <div class="final-footer">
+                    如果不愿意，我就一直追<br>
+                    如果愿意，点一下下面的心
+                </div>
+                <div style="font-size: 50px; margin: 30px 0; cursor: pointer;" onclick="sayYes()">
+                    💝
+                </div>
+            </div>
+            
+            <!-- 重置按钮 - 修改后可以返回到封面 -->
+            <button class="reset-btn" onclick="resetToCover()">重新开始</button>
+        </div>
+    </div>
+    
+    <!-- 回到顶部按钮 -->
+    <div class="back-to-top" onclick="scrollToTop()" title="回到顶部">↑</div>
+    
+    <script>
+        // 在一起的日子（修改成你们的真实日期）
+        const startDate = new Date('2023-05-20'); // 【修改成你们在一起的日期】
+        
+        // 解锁状态
+        let unlockedLevels = [false, false, false, false];
+        
+        // 开始旅程
+        function startJourney() {
+            document.getElementById('coverPage').style.display = 'none';
+            document.getElementById('mainContent').style.display = 'block';
+            
+            // 重置解锁状态（如果是重新开始的）
+            if (unlockedLevels.some(v => v === true)) {
+                resetJourney();
+            }
+            
+            // 计算在一起的天数
+            updateTogetherDays();
+            
+            // 每天更新一次
+            setInterval(updateTogetherDays, 86400000); // 24小时更新一次
+            
+            // 滚动到顶部
+            window.scrollTo(0, 0);
+        }
+        
+        // 计算在一起的天数
+        function updateTogetherDays() {
+            const today = new Date();
+            const diffTime = today - startDate;
+            const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+            document.getElementById('togetherDays').textContent = diffDays >= 0 ? diffDays : 0;
+        }
+        
+        // 解锁层级
+        function unlockLevel(level) {
+            // 如果已经解锁，不重复操作
+            if (unlockedLevels[level-1]) return;
+            
+            // 解锁当前层
+            unlockedLevels[level-1] = true;
+            
+            // 更新锁图标
+            document.getElementById(`lock${level}`).innerHTML = '🔓';
+            document.getElementById(`lock${level}`).style.opacity = '0';
+            
+            // 更新进度点
+            document.getElementById(`dot${level}`).classList.add('completed');
+            
+            // 显示对应的内容
+            document.getElementById(`content${level}`).classList.add('show');
+            
+            // 如果是第二层及以上，更新前面的连线
+            if (level > 1) {
+                document.getElementById(`line${level-1}`).classList.add('filled');
+            }
+            
+            // 检查是否所有层都解锁了
+            checkAllUnlocked();
+        }
+        
+        // 检查是否全部解锁
+        function checkAllUnlocked() {
+            if (unlockedLevels.every(v => v === true)) {
+                setTimeout(() => {
+                    document.getElementById('finalGrand').classList.add('show');
+                    
+                    // 添加一些飘落的爱心
+                    startFinalHearts();
+                }, 500);
+            }
+        }
+        
+        // 最终特效
+        function startFinalHearts() {
+            for (let i = 0; i < 30; i++) {
+                setTimeout(() => {
+                    createFloatingHeart();
+                }, i * 100);
+            }
+        }
+        
+        function createFloatingHeart() {
+            const heart = document.createElement('div');
+            heart.innerHTML = '❤️';
+            heart.style.position = 'fixed';
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.top = '-50px';
+            heart.style.fontSize = (20 + Math.random() * 30) + 'px';
+            heart.style.opacity = '0.8';
+            heart.style.zIndex = '9999';
+            heart.style.animation = `floatDown ${3 + Math.random() * 4}s linear`;
+            heart.style.pointerEvents = 'none';
+            
+            document.body.appendChild(heart);
+            
+            setTimeout(() => {
+                heart.remove();
+            }, 7000);
+        }
+        
+        // 她说愿意
+        function sayYes() {
+            alert('❤️ 谢谢你愿意再给我一次机会 ❤️\n\n我会用一辈子证明，你今天的选择是对的。');
+            
+            // 满屏爱心
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    createFloatingHeart();
+                }, i * 50);
+            }
+        }
+        
+        // 重置旅程（内部使用）
+        function resetJourney() {
+            unlockedLevels = [false, false, false, false];
+            
+            for (let i = 1; i <= 4; i++) {
+                document.getElementById(`lock${i}`).innerHTML = '🔒';
+                document.getElementById(`lock${i}`).style.opacity = '0.5';
+                document.getElementById(`dot${i}`).classList.remove('completed');
+                document.getElementById(`content${i}`).classList.remove('show');
+            }
+            
+            for (let i = 1; i <= 3; i++) {
+                document.getElementById(`line${i}`).classList.remove('filled');
+            }
+            
+            document.getElementById('finalGrand').classList.remove('show');
+        }
+        
+        // 重置并返回封面（新函数）
+        function resetToCover() {
+            // 重置所有解锁状态
+            resetJourney();
+            
+            // 隐藏主内容，显示封面
+            document.getElementById('mainContent').style.display = 'none';
+            document.getElementById('coverPage').style.display = 'flex';
+            
+            // 滚动到顶部
+            window.scrollTo(0, 0);
+        }
+        
+        // 回到顶部
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+        
+        // 添加CSS动画
+        const style = document.createElement('style');
+        style.innerHTML = `
+            @keyframes floatDown {
+                0% { transform: translateY(0) rotate(0deg); opacity: 0.8; }
+                100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+        
+        // 背景装饰爱心
+        function initBgHearts() {
+            const bg = document.getElementById('bgHearts');
+            for (let i = 0; i < 20; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'bg-heart';
+                heart.innerHTML = '❤️';
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.animationDelay = Math.random() * 20 + 's';
+                heart.style.fontSize = (10 + Math.random() * 20) + 'px';
+                bg.appendChild(heart);
+            }
+        }
+        
+        initBgHearts();
+    </script>
+</body>
+</html>
