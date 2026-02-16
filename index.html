@@ -137,7 +137,7 @@
             letter-spacing: 1px;
         }
         
-        /* 进度指示 */
+        /* 进度指示 - 改成3个点 */
         .journey-progress {
             display: flex;
             justify-content: space-between;
@@ -360,34 +360,6 @@
             border-radius: 18px;
         }
         
-        /* 专属档案卡片 */
-        .profile-grid {
-            display: grid;
-            gap: 15px;
-        }
-        
-        .profile-item {
-            background: rgba(255, 240, 240, 0.8);
-            padding: 18px;
-            border-radius: 20px;
-            border: 1px solid #ffd9d9;
-        }
-        
-        .profile-question {
-            font-weight: bold;
-            color: #b34747;
-            margin-bottom: 8px;
-            font-size: 18px;
-        }
-        
-        .profile-answer {
-            color: #5a3e3e;
-            font-size: 17px;
-            line-height: 1.6;
-            padding-left: 10px;
-            border-left: 3px solid #ffb6b6;
-        }
-        
         /* 最终告白 */
         .final-love {
             background: rgba(255, 255, 255, 0.98);
@@ -513,15 +485,13 @@
         
         <!-- 主内容（初始隐藏） -->
         <div id="mainContent" style="display: none;">
-            <!-- 进度指示 -->
+            <!-- 进度指示 - 改成3个点 -->
             <div class="journey-progress">
                 <div id="dot1" class="progress-dot">①</div>
                 <div id="line1" class="progress-line"></div>
                 <div id="dot2" class="progress-dot">②</div>
                 <div id="line2" class="progress-line"></div>
                 <div id="dot3" class="progress-dot">③</div>
-                <div id="line3" class="progress-line"></div>
-                <div id="dot4" class="progress-dot">④</div>
             </div>
             
             <!-- 第一层：道歉信 -->
@@ -605,58 +575,15 @@
                 </div>
             </div>
             
-            <!-- 第三层：专属档案（证明你懂她） -->
+            <!-- 第三层：最终告白（原第四层） -->
             <div id="interact3" class="interact-card" onclick="unlockLevel(3)">
-                <div class="interact-icon">🏮</div>
-                <div class="interact-title">点亮这盏灯</div>
-                <div class="interact-sub">让你看看我有多懂你</div>
+                <div class="interact-icon">❤️</div>
+                <div class="interact-title">最后一颗心</div>
+                <div class="interact-sub">点开它，听我最想说的话</div>
                 <div class="lock-icon" id="lock3">🔒</div>
             </div>
             
             <div id="content3" class="content-card">
-                <div class="content-title">🏮 我眼中的你</div>
-                <div class="profile-grid">
-                    <div class="profile-item">
-                        <div class="profile-question">你最爱的食物是什么？</div>
-                        <div class="profile-answer">【她的最爱，比如：火锅，而且要辣的那种】</div>
-                    </div>
-                    
-                    <div class="profile-item">
-                        <div class="profile-question">你生气时会做什么？</div>
-                        <div class="profile-answer">【写她生气时的样子，比如：不说话，自己生闷气】</div>
-                    </div>
-                    
-                    <div class="profile-item">
-                        <div class="profile-question">你最让我心动的一个习惯</div>
-                        <div class="profile-answer">【写她的小习惯，比如：吃东西前要先拍照，认真吃饭的样子超可爱】</div>
-                    </div>
-                    
-                    <div class="profile-item">
-                        <div class="profile-question">你最害怕什么？</div>
-                        <div class="profile-answer">【写她的小秘密，比如：怕黑、怕打雷】</div>
-                    </div>
-                    
-                    <div class="profile-item">
-                        <div class="profile-question">你最大的优点是什么？</div>
-                        <div class="profile-answer">【写她的优点，比如：对朋友特别真诚，总是为别人着想】</div>
-                    </div>
-                    
-                    <div class="profile-item">
-                        <div class="profile-question">你最喜欢别人怎么夸你？</div>
-                        <div class="profile-answer">【写她的小心思，比如：夸她温柔、夸她善良】</div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- 第四层：最终告白 -->
-            <div id="interact4" class="interact-card" onclick="unlockLevel(4)">
-                <div class="interact-icon">❤️</div>
-                <div class="interact-title">最后一颗心</div>
-                <div class="interact-sub">点开它，听我最想说的话</div>
-                <div class="lock-icon" id="lock4">🔒</div>
-            </div>
-            
-            <div id="content4" class="content-card">
                 <div class="content-title">❤️ 想对你说的所有心里话</div>
                 <div class="letter-content">
                     <p>亲爱的【马紫伊】：</p>
@@ -707,7 +634,7 @@
                 </div>
             </div>
             
-            <!-- 重置按钮 - 修改后可以返回到封面 -->
+            <!-- 重置按钮 -->
             <button class="reset-btn" onclick="resetToCover()">重新开始</button>
         </div>
     </div>
@@ -719,8 +646,8 @@
         // 在一起的日子（修改成你们的真实日期）
         const startDate = new Date('2023-05-20'); // 【修改成你们在一起的日期】
         
-        // 解锁状态
-        let unlockedLevels = [false, false, false, false];
+        // 解锁状态 - 改成3个
+        let unlockedLevels = [false, false, false];
         
         // 开始旅程
         function startJourney() {
@@ -831,23 +758,23 @@
         
         // 重置旅程（内部使用）
         function resetJourney() {
-            unlockedLevels = [false, false, false, false];
+            unlockedLevels = [false, false, false];
             
-            for (let i = 1; i <= 4; i++) {
+            for (let i = 1; i <= 3; i++) {
                 document.getElementById(`lock${i}`).innerHTML = '🔒';
                 document.getElementById(`lock${i}`).style.opacity = '0.5';
                 document.getElementById(`dot${i}`).classList.remove('completed');
                 document.getElementById(`content${i}`).classList.remove('show');
             }
             
-            for (let i = 1; i <= 3; i++) {
+            for (let i = 1; i <= 2; i++) {
                 document.getElementById(`line${i}`).classList.remove('filled');
             }
             
             document.getElementById('finalGrand').classList.remove('show');
         }
         
-        // 重置并返回封面（新函数）
+        // 重置并返回封面
         function resetToCover() {
             // 重置所有解锁状态
             resetJourney();
